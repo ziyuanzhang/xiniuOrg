@@ -172,14 +172,14 @@ export default {
     };
   },
   async created() {
-    // let data = {
-    //   channelNo: "test",
-    //   clientType: this.$clientType
-    // };
-    // let res = await this.$ajax.get("/ad/browserCount", { params: data });
-    // if (res && res.data && res.data.msg == "success") {
-    //   console.log("埋点：", res);
-    // }
+    let data = {
+      channelNo: "test",
+      clientType: this.$clientType
+    };
+    let res = await this.$ajax.get("/ad/browserCount", { params: data });
+    if (res && res.data && res.data.msg == "success") {
+      console.log("埋点：", res);
+    }
   },
   mounted() {
     setInterval(() => {
