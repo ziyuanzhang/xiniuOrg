@@ -286,13 +286,13 @@ export default {
 <style lang="less" scoped>
 @keyframes zoom {
   0% {
-    transform: scale(1.05);
+    transform: scale(1);
   }
   50% {
-    transform: scale(0.95);
+    transform: scale(1.1);
   }
   100% {
-    transform: scale(1.05);
+    transform: scale(1);
   }
 }
 .registered {
@@ -336,6 +336,7 @@ export default {
         }
       }
       .mobile-con {
+        overflow: hidden;
         margin-top: 15px;
         width: 100%;
         height: 58px;
@@ -392,12 +393,14 @@ export default {
         height: 50px;
         line-height: 50px;
         color: #fff;
+        width: 108%;
+        margin-left: -3.5%;
         font-weight: bold;
         letter-spacing: 1px;
         margin-bottom: 20px;
         background: url("../assets/images/registered/btn.png");
         background-size: 100% 100%;
-        animation: zoom 2s ease 0s infinite alternate;
+        animation: zoom 1s ease 0s infinite alternate;
       }
       .prompt {
         display: flex;
