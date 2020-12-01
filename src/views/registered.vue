@@ -300,16 +300,17 @@ export default {
   box-sizing: border-box;
   text-align: center;
   position: relative;
+  font-size: 0;
 
   .logo {
     width: 100%;
   }
   .step {
-    margin-top: -5px;
+    //margin-top: -5px;
     width: 100%;
   }
   .registered-con {
-    margin-top: -5px;
+    //margin-top: -5px;
     width: 100%;
     background-image: url("../assets/images/registered/registered-bg.jpg");
     .container {
@@ -324,13 +325,13 @@ export default {
         align-items: center;
         .square {
           width: 4px;
-          height: 14px;
+          height: 16px;
           border-radius: 15px;
           background-color: #21f6f3;
           margin-right: 8px;
         }
         .txt {
-          font-size: 12px;
+          font-size: 13px;
           color: #737373;
         }
       }
@@ -352,14 +353,14 @@ export default {
           color: #737373;
           margin-right: 40px;
           height: 20px;
-          font-size: 14px;
+          font-size: 15px;
           background-color: transparent;
           border-width: 0px;
         }
       }
       .verification-con {
         margin-top: 10px;
-        font-size: 12px;
+        font-size: 14px;
         display: flex;
         align-items: center;
         .verification {
@@ -386,6 +387,7 @@ export default {
         }
       }
       .btn {
+        font-size: 18px;
         margin-top: 15px;
         height: 50px;
         line-height: 50px;
@@ -412,11 +414,11 @@ export default {
             box-sizing: border-box;
           }
           .right {
-            width: 16px;
+            width: 13px;
           }
         }
         .txt {
-          font-size: 12px;
+          font-size: 14px;
           color: #666;
           text-align: left;
           .red,
@@ -492,11 +494,11 @@ export default {
     }
   }
   .reason {
-    margin-top: -5px;
+    //margin-top: -5px;
     width: 100%;
   }
   .footer {
-    margin-top: -5px;
+    //margin-top: -5px;
     width: 100%;
   }
   .toast {

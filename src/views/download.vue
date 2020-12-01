@@ -59,6 +59,7 @@ export default {
   width: 100vw;
   height: 100vh;
   // overflow-x: hidden;
+  font-size: 0px;
   .top {
     width: 100%;
   }
@@ -77,11 +78,11 @@ export default {
 
   .tips {
     width: 100%;
-    margin-bottom: -5px;
+    //margin-bottom: -5px;
   }
   .step {
     width: 100%;
-    margin-bottom: -5px;
+    //margin-bottom: -5px;
   }
   .bottom {
     width: 100%;
