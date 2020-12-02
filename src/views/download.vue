@@ -47,10 +47,10 @@ export default {
 <style lang="less" scoped>
 .download {
   width: 100vw;
-  height: 100vh;
   font-size: 0px;
   text-align: center;
   background-color: #fff;
+  padding-bottom: 110px;
   .top {
     width: 100%;
   }
@@ -76,12 +76,16 @@ export default {
     //margin-bottom: -5px;
   }
   .bottom {
-    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    width: 100vw;
     height: 110px;
+    overflow: hidden;
     background-image: url("../assets/images/download/footer.jpg");
     background-size: auto 100%;
     text-align: center;
-    position: relative;
     .tips {
       color: #fff;
     }
