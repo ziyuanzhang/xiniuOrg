@@ -165,7 +165,7 @@ export default {
   },
   async created() {
     let data = {
-      channelNo: "test",
+      channelNo: this.$channelNo,
       clientType: this.$clientType
     };
     let res = await this.$ajax.get("/ad/browserCount", { params: data });
@@ -247,7 +247,7 @@ export default {
       let data = {
         authCode: this.verification,
         mobile: this.tel,
-        channelNo: "test",
+        channelNo: this.$channelNo,
         majia: "xiniufenqi"
       };
       let res = await this.$ajax.get("/api/user/loginByAuthCode", {
