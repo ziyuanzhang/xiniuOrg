@@ -4,19 +4,17 @@ import router from "./router";
 import store from "./store";
 import "@/assets/css/reset.css";
 import Axios from "axios";
-import GetUrlParam from "./utils/utils";
+import utls from "./utils/utils";
 Axios.defaults.baseURL = "http://boss.cj713.cn:8080/loan";
 Vue.prototype.$ajax = Axios;
 
 Vue.config.productionTip = false;
 
-let u = navigator.userAgent;
-if (u.indexOf("Android") > -1 || u.indexOf("Adr") > -1) {
-  Vue.prototype.$clientType = 1;
-} else {
-  Vue.prototype.$clientType = 2;
-}
-Vue.prototype.$channelNo = GetUrlParam("opt") ? GetUrlParam("opt") : "test";
+Vue.prototype.$clientType = utls.isAndroid() ? 1 : 2;
+
+Vue.prototype.$channelNo = utls.GetUrlParam("channelNo")
+  ? utls.GetUrlParam("channelNo")
+  : "test";
 
 new Vue({
   router,

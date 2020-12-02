@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import utls from "../utils/utils.js";
 export default {
   data() {
     return {
@@ -37,18 +38,7 @@ export default {
     };
   },
   created() {
-    let u = navigator.userAgent;
-
-    if (u.indexOf("Android") > -1 || u.indexOf("Adr") > -1) {
-      this.isAndroid = true;
-    } else {
-      this.isAndroid = false;
-    }
-    // if (u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
-    //   this.isAndroid = false;
-    // } else {
-    //   this.isAndroid = true;
-    // }
+    this.isAndroid = utls.isAndroid();
     console.log(this.isAndroid);
   }
 };
