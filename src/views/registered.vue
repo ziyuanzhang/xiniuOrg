@@ -82,14 +82,6 @@
 
     <img class="reason" src="../assets/images/registered/reason.jpg" alt="" />
     <img class="footer" src="../assets/images/registered/footer.jpg" alt="" />
-    <!-- <div class="line"></div>
-    <div class="footer">
-      <div class="record">粤ICP备20000401号-1</div>
-      <div class="tips">理性借款，避免逾期</div>
-      <div class="txt">
-        贷款有风险，借款需谨慎，请根据个人能力合理贷款；实际贷款额度因个人情况和资质而定，资金来源于银行等正规借款机构本平台为贷款信息平台不涉及贷款业务。
-      </div>
-    </div> -->
     <div class="toast" v-if="tips.length > 0">{{ tips }}</div>
   </div>
 </template>
@@ -167,7 +159,7 @@ export default {
         }
       ],
       selectedList: [],
-      isAgree: false,
+      isAgree: true,
       count: 0
     };
   },
@@ -289,7 +281,7 @@ export default {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(0.95);
   }
   100% {
     transform: scale(1);
@@ -301,6 +293,7 @@ export default {
   text-align: center;
   position: relative;
   font-size: 0;
+  background-color: #1b1b1b;
 
   .logo {
     width: 100%;
@@ -366,10 +359,10 @@ export default {
         align-items: center;
         .verification {
           flex: 1;
-          height: 30px;
+          height: 50px;
           border: none;
           outline: none;
-          border-radius: 50px;
+          border-radius: 10px;
           background-color: #e6e6e6;
           color: #737373;
           margin-right: 20px;
@@ -378,12 +371,10 @@ export default {
         }
         .countDown-btn {
           width: 60px;
-          height: 30px;
-          line-height: 30px;
-          border-radius: 50px;
-
+          height: 50px;
+          line-height: 50px;
+          border-radius: 10px;
           color: #fff;
-
           background-color: #f24b5f;
         }
       }
@@ -393,8 +384,6 @@ export default {
         height: 50px;
         line-height: 50px;
         color: #fff;
-        width: 108%;
-        margin-left: -3.5%;
         font-weight: bold;
         letter-spacing: 1px;
         margin-bottom: 20px;

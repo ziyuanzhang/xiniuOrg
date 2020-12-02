@@ -6,6 +6,11 @@ import registered from "../views/registered.vue";
 Vue.use(VueRouter);
 
 const routes = [
+  // {
+  //   path: "/",
+  //   name: "download",
+  //   component: download
+  // },
   {
     path: "/",
     name: "registered",

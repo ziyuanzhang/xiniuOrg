@@ -17,8 +17,8 @@
       </a>
       <a
         class="link"
-        href="https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_jiguang.plist"
         v-else
+        href="itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_jiguang.plist"
       ></a>
       <img
         class="btn"
@@ -58,8 +58,9 @@ export default {
 .download {
   width: 100vw;
   height: 100vh;
-  // overflow-x: hidden;
   font-size: 0px;
+  text-align: center;
+  background-color: #fff;
   .top {
     width: 100%;
   }
@@ -77,7 +78,7 @@ export default {
   }
 
   .tips {
-    width: 100%;
+    width: 80%;
     //margin-bottom: -5px;
   }
   .step {
