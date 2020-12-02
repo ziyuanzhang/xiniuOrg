@@ -406,7 +406,7 @@ export default {
             box-sizing: border-box;
           }
           .right {
-            width: 13px;
+            width: 16px;
           }
         }
         .txt {
