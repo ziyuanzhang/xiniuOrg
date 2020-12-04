@@ -40,6 +40,13 @@ export default {
   created() {
     this.isAndroid = utls.isAndroid();
     console.log(this.isAndroid);
+    if (utls.isAndroid()) {
+      window.location.href =
+        "https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/jiguang.apk";
+    } else {
+      window.location.href =
+        "itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_jiguang.plist";
+    }
   }
 };
 </script>
