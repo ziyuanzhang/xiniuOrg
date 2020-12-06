@@ -9,17 +9,8 @@
     <img class="step step3" src="../assets/images/download/step3.jpg" alt="" />
     <img class="step step4" src="../assets/images/download/step4.jpg" alt="" />
     <div class="bottom">
-      <a
-        class="link"
-        href="https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/jiguang.apk"
-        v-if="isAndroid"
-      >
-      </a>
-      <a
-        class="link"
-        v-else
-        href="itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_jiguang.plist"
-      ></a>
+      <a class="link" :href="androidUrl" v-if="isAndroid"> </a>
+      <a class="link" v-else :href="iosUrl"></a>
       <img
         class="btn"
         src="../assets/images/download/download-btn.png"
@@ -34,18 +25,20 @@ import utls from "../utils/utils.js";
 export default {
   data() {
     return {
-      isAndroid: true
+      isAndroid: true,
+      androidUrl:
+        "https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/xiniu.apk",
+      iosUrl:
+        "itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_xiniu.plist"
     };
   },
   created() {
     this.isAndroid = utls.isAndroid();
     console.log(this.isAndroid);
     if (utls.isAndroid()) {
-      window.location.href =
-        "https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/jiguang.apk";
+      window.location.href = this.androidUrl;
     } else {
-      window.location.href =
-        "itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_jiguang.plist";
+      window.location.href = this.iosUrl;
     }
   }
 };
