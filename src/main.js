@@ -5,7 +5,7 @@ import store from "./store";
 import "@/assets/css/reset.css";
 import Axios from "axios";
 import utls from "./utils/utils";
-Axios.defaults.baseURL = "http://gdzlwlkj.cn:8080/loan/";
+Axios.defaults.baseURL = "http://gdzlwlkj.cn:8080/loan";
 Vue.prototype.$ajax = Axios;
 
 Vue.config.productionTip = false;
