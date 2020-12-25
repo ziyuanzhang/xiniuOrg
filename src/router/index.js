@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import download from "../views/download.vue";
-import registered from "../views/registered.vue";
+//import registered from "../views/registered.vue";
 import registeredNew from "../views/registeredNew.vue";
 
 Vue.use(VueRouter);
@@ -17,11 +17,11 @@ const routes = [
     name: "registeredNew",
     component: registeredNew
   },
-  {
-    path: "/registered",
-    name: "registered",
-    component: registered
-  },
+  // {
+  //   path: "/registered",
+  //   name: "registered",
+  //   component: registered
+  // },
   {
     path: "/download",
     name: "download",
