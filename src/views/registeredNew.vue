@@ -1,6 +1,12 @@
 <template>
   <div class="registered">
-    <img class="top" src="../assets/images/registeredNew/1 (1).jpg" alt="" />
+    <div class="top-con">
+      <div class="amount">
+        {{ amount | format1 }}<span class="comma">，</span
+        >{{ amount | format2 }}
+      </div>
+      <img class="top" src="../assets/images/registeredNew/1 (1).jpg" alt="" />
+    </div>
     <img class="step" src="../assets/images/registeredNew/1 (2).jpg" alt="" />
     <div class="registered-top">
       <div class="tel-con">
@@ -17,7 +23,7 @@
         />
       </div>
     </div>
-    <div class="registered-middle">
+    <div class="registered-middle" v-if="countDown > 0">
       <input
         class="verification"
         type="text"
@@ -29,6 +35,7 @@
     <div class="registered-bottom">
       <img
         class="btn"
+        :class="{ active: !isTime }"
         @click="checkFun()"
         src="../assets/images/registeredNew/btn.png"
         alt=""
@@ -161,7 +168,9 @@ export default {
       ],
       selectedList: [],
       isAgree: true,
-      count: 0
+      count: 0,
+      amount: 100000,
+      isTime: true
     };
   },
   async created() {
@@ -185,6 +194,14 @@ export default {
       }
       this.selectedList = this.list.slice(this.count, this.count + 3);
     }, 1000);
+    let amount = setInterval(() => {
+      if (this.amount < 200000) {
+        this.amount += 4;
+      } else {
+        this.isTime = false;
+        clearInterval(amount);
+      }
+    }, 0);
   },
   methods: {
     agreeFun() {
@@ -263,6 +280,16 @@ export default {
       }
     }
   },
+  filters: {
+    format1(val) {
+      val = val + "";
+      return val.slice(0, 3);
+    },
+    format2(val) {
+      val = val + "";
+      return val.slice(3);
+    }
+  },
   watch: {
     tips() {
       if (this.tips.length > 0) {
@@ -295,20 +322,39 @@ export default {
   position: relative;
   font-size: 0;
   background-color: #fff;
-
-  .top {
-    width: 100%;
+  .top-con {
+    position: relative;
+    .top {
+      width: 100%;
+    }
+    .amount {
+      position: absolute;
+      left: 50%;
+      top: 54.5%;
+      transform: translateX(-50%);
+      font-size: 54px;
+      color: #e33858;
+      font-weight: bold;
+      white-space: nowrap;
+      .comma {
+        position: relative;
+        top: -10px;
+        margin: 0 -13px;
+      }
+    }
   }
+
   .step {
     //margin-top: -5px;
     width: 100%;
   }
   .registered-top {
     width: 100%;
-    padding: 23px 50px 57px;
+    padding: 23px 50px 0px;
     box-sizing: border-box;
     background-image: url("../assets/images/registeredNew/1 (3).jpg");
-    background-size: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
 
     .tel-con {
       width: 100%;
@@ -334,10 +380,8 @@ export default {
   .registered-middle {
     width: 100%;
     background-image: url("../assets/images/registeredNew/line.jpg");
-    background-size: cover;
-
-    margin-top: 10px;
-    padding: 0 20px;
+    background-size: 100%;
+    padding: 10px 50px;
     box-sizing: border-box;
 
     font-size: 14px;
@@ -349,7 +393,7 @@ export default {
       border: none;
       outline: none;
       border-radius: 10px;
-      background-color: #e6e6e6;
+      background-color: #fff;
       color: #737373;
       margin-right: 20px;
       padding: 0 10px;
@@ -366,23 +410,25 @@ export default {
   }
   .registered-bottom {
     width: 100%;
-    height: 145px;
-    padding: 0 20px;
+    padding: 15px 20px 0;
     box-sizing: border-box;
     background-image: url("../assets/images/registeredNew/1 (4).jpg");
-    background-size: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
     position: relative;
 
     .btn {
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      margin-left: -38%;
-      height: 50px;
+      // position: absolute;
+      // top: -40px;
+      // left: 50%;
+      // margin-left: -38%;
+      width: 80%;
+    }
+    .active {
       animation: zoom 1s ease 0s infinite alternate;
     }
     .prompt {
-      padding: 70px 20px 0;
+      padding: 70px 20px 34px;
       display: flex;
       align-items: flex-start;
       .icon-con {
@@ -409,6 +455,11 @@ export default {
         red:focus {
           color: #d6cd9d !important;
         }
+      }
+    }
+    @media screen and (min-width: 376px) {
+      .prompt {
+        padding: 70px 20px 50px;
       }
     }
   }
@@ -447,10 +498,10 @@ export default {
             }
 
             .tips1 {
-              background: url("../assets/images/registeredNew/apply.png");
+              background: url("../assets/images/registeredNew/apply.jpg");
             }
             .tips2 {
-              background: url("../assets/images/registeredNew/loan.png");
+              background: url("../assets/images/registeredNew/loan.jpg");
             }
             .tips {
               width: 45px;
