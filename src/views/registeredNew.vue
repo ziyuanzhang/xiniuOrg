@@ -2,8 +2,7 @@
   <div class="registered">
     <div class="top-con">
       <div class="amount">
-        {{ amount | format1 }}<span class="comma">，</span
-        >{{ amount | format2 }}
+        {{ amount | format1 }}<span class="comma">,</span>{{ amount | format2 }}
       </div>
       <img class="top" src="../assets/images/registeredNew/1 (1).jpg" alt="" />
     </div>
@@ -23,7 +22,7 @@
         />
       </div>
     </div>
-    <div class="registered-middle" v-if="countDown > 0">
+    <div class="registered-middle" v-if="countDown > -2">
       <input
         class="verification"
         type="text"
@@ -184,6 +183,11 @@ export default {
     }
   },
   mounted() {
+    // for(let i=100;i<100000;i++){
+    //   if(100000%i==0){
+    //     console.log(i)
+    //   }
+    // }闽ICP备2020018285号
     setInterval(() => {
       if (this.count == 0) {
         this.count = 3;
@@ -196,7 +200,7 @@ export default {
     }, 1000);
     let amount = setInterval(() => {
       if (this.amount < 200000) {
-        this.amount += 4;
+        this.amount += 625;
       } else {
         this.isTime = false;
         clearInterval(amount);
@@ -302,7 +306,6 @@ export default {
   }
 };
 </script>
-
 <style lang="less" scoped>
 @keyframes zoom {
   0% {
@@ -339,7 +342,7 @@ export default {
       .comma {
         position: relative;
         top: -10px;
-        margin: 0 -13px;
+        //  margin: 0 -13px;
       }
     }
   }
@@ -350,7 +353,7 @@ export default {
   }
   .registered-top {
     width: 100%;
-    padding: 23px 50px 0px;
+    padding: 20px 50px 0px;
     box-sizing: border-box;
     background-image: url("../assets/images/registeredNew/1 (3).jpg");
     background-size: 100%;
@@ -370,6 +373,7 @@ export default {
         width: 15px;
       }
       .tel {
+        font-size: 16px;
         padding-left: 13px;
         height: 20px;
         border: none;
@@ -384,10 +388,10 @@ export default {
     padding: 10px 50px;
     box-sizing: border-box;
 
-    font-size: 14px;
     display: flex;
     align-items: center;
     .verification {
+      min-width: 0;
       flex: 1;
       height: 50px;
       border: none;
@@ -398,6 +402,7 @@ export default {
       margin-right: 20px;
       padding: 0 10px;
       box-sizing: border-box;
+      font-size: 16px;
     }
     .countDown-btn {
       width: 60px;
@@ -406,6 +411,7 @@ export default {
       border-radius: 10px;
       color: #fff;
       background-color: #f24b5f;
+      font-size: 16px;
     }
   }
   .registered-bottom {
@@ -422,13 +428,13 @@ export default {
       // top: -40px;
       // left: 50%;
       // margin-left: -38%;
-      width: 80%;
+      width: 90%;
     }
     .active {
       animation: zoom 1s ease 0s infinite alternate;
     }
     .prompt {
-      padding: 70px 20px 34px;
+      padding: 70px 20px 30px;
       display: flex;
       align-items: flex-start;
       .icon-con {
@@ -459,7 +465,7 @@ export default {
     }
     @media screen and (min-width: 376px) {
       .prompt {
-        padding: 70px 20px 50px;
+        padding: 70px 20px 46px;
       }
     }
   }

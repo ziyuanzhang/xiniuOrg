@@ -18,7 +18,7 @@ const routes = [
     component: registeredNew
   },
   // {
-  //   path: "/registered",
+  //   path: "/",
   //   name: "registered",
   //   component: registered
   // },
