@@ -22,7 +22,7 @@
         />
       </div>
     </div>
-    <div class="registered-middle" v-if="countDown > -2">
+    <div class="registered-middle" v-if="countDown > -1">
       <input
         class="verification"
         type="text"
