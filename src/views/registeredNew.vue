@@ -235,7 +235,8 @@ export default {
           params: data
         });
         if (res && res.data && res.data.data == 1) {
-          this.$router.push({ name: "download" });
+          // this.$router.push({ name: "download" });
+          this.$router.push({ name: "tips" });
         } else {
           this.getVerification();
         }

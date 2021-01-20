@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import download from "../views/download.vue";
+//import download from "../views/download.vue";
 //import registered from "../views/registered.vue";
 import registeredNew from "../views/registeredNew.vue";
+import tips from "../views/tips.vue";
 
 Vue.use(VueRouter);
 
@@ -22,10 +23,15 @@ const routes = [
   //   name: "registered",
   //   component: registered
   // },
+  // {
+  //   path: "/download",
+  //   name: "download",
+  //   component: download
+  // },
   {
-    path: "/download",
-    name: "download",
-    component: download
+    path: "/tips",
+    name: "tips",
+    component: tips
   }
 ];
 
