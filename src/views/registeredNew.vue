@@ -88,7 +88,14 @@
     </div>
 
     <img class="reason" src="../assets/images/registeredNew/1 (6).jpg" alt="" />
-    <img class="footer" src="../assets/images/registeredNew/1 (7).jpg" alt="" />
+    <div class="footer">
+      <!-- <img class="img" src="../assets/images/registeredNew/1 (7).jpg" alt="" /> -->
+      <div class="title">京ICP备20010442号-1</div>
+      <div class="subtitle">理性借款，避免逾期</div>
+      <div class="content">
+        贷款有风险，借款需谨慎，请根据个人能力合理贷款；实际贷款额度因个人情况和资质而定，资金来源于银行等正规借款机构本平台为贷款信息平台不涉及贷款业务。
+      </div>
+    </div>
     <div class="toast" v-if="tips.length > 0">{{ tips }}</div>
   </div>
 </template>
@@ -235,7 +242,7 @@ export default {
           params: data
         });
         if (res && res.data && res.data.data == 1) {
-          this.$router.push({ name: "registerComplete" });
+          this.$router.push({ name: "download" });
         } else {
           this.getVerification();
         }
@@ -277,7 +284,7 @@ export default {
       });
       if (res && res.data) {
         if (res.data.status == 0) {
-          this.$router.push({ name: "registerComplete" });
+          this.$router.push({ name: "download" });
         } else {
           this.tips = res.data.msg;
         }
@@ -534,7 +541,27 @@ export default {
   }
   .footer {
     //margin-top: -5px;
+    background-image: url("../assets/images/registeredNew/footer-bg.jpg");
+    background-repeat: repeat-x;
+    background-color: #f8f8f8;
     width: 100%;
+    padding: 30px 17px 20px;
+    box-sizing: border-box;
+    .title {
+      font-size: 12px;
+      color: #787878;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: #787878;
+      margin-bottom: 10px;
+    }
+    .content {
+      font-size: 12px;
+      color: #787878;
+    }
   }
   .toast {
     position: fixed;
