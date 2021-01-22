@@ -32,7 +32,16 @@ export default {
         "itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_xiniu.plist"
     };
   },
-  created() {
+  async created() {
+    let data = {
+      channelNo: this.$channelNo,
+      clientType: this.$clientType
+    };
+    let res = await this.$ajax.get("/ad/browserCount", { params: data });
+    if (res && res.data && res.data.msg == "success") {
+      console.log("埋点：", res);
+    }
+
     this.isAndroid = utls.isAndroid();
     console.log(this.isAndroid);
     if (utls.isAndroid()) {
