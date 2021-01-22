@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 //import download from "../views/download.vue";
 //import registered from "../views/registered.vue";
 import registeredNew from "../views/registeredNew.vue";
-import tips from "../views/tips.vue";
+import registerComplete from "../views/registerComplete.vue";
 
 Vue.use(VueRouter);
 
@@ -29,9 +29,9 @@ const routes = [
   //   component: download
   // },
   {
-    path: "/tips",
-    name: "tips",
-    component: tips
+    path: "/registerComplete",
+    name: "registerComplete",
+    component: registerComplete
   }
 ];
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="tips">
+  <div class="registerComplete">
     <img class="img" src="../assets/images/tips/icon.png" alt="" />
     <div class="txt">恭喜您已经注册成功！</div>
     <div class="txt">客服会在24小时内与您联系</div>
@@ -21,7 +21,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.tips {
+.registerComplete {
   font-size: 0px;
   padding: 0 30px;
   box-sizing: border-box;

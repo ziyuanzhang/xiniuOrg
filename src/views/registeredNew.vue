@@ -235,8 +235,7 @@ export default {
           params: data
         });
         if (res && res.data && res.data.data == 1) {
-          // this.$router.push({ name: "download" });
-          this.$router.push({ name: "tips" });
+          this.$router.push({ name: "registerComplete" });
         } else {
           this.getVerification();
         }
@@ -278,7 +277,7 @@ export default {
       });
       if (res && res.data) {
         if (res.data.status == 0) {
-          this.$router.push({ name: "download" });
+          this.$router.push({ name: "registerComplete" });
         } else {
           this.tips = res.data.msg;
         }
