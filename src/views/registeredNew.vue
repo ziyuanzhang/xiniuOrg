@@ -62,10 +62,10 @@
       </div>
     </div>
 
-    <div class="switch">
+    <div class="switch" v-if="false">
       <img
         class="switch-img"
-        src="../assets/images/registeredNew/1 (5).jpg"
+        src="../assets/images/registeredNew/1 (5).png"
         alt=""
       />
       <div class="content">
@@ -88,12 +88,23 @@
     </div>
 
     <img class="reason" src="../assets/images/registeredNew/1 (6).jpg" alt="" />
-    <div class="footer">
+    <div class="footer" v-if="false">
       <!-- <img class="img" src="../assets/images/registeredNew/1 (7).jpg" alt="" /> -->
       <div class="title">京ICP备20010442号-1</div>
       <div class="subtitle">理性借款，避免逾期</div>
       <div class="content">
         贷款有风险，借款需谨慎，请根据个人能力合理贷款；实际贷款额度因个人情况和资质而定，资金来源于银行等正规借款机构本平台为贷款信息平台不涉及贷款业务。
+      </div>
+    </div>
+    <div class="footer2">
+      <div class="item">广州正梁网络科技有限公司</div>
+      <div class="item">粤ICP备20044831号-1</div>
+      <div class="item">年利率不超过36%</div>
+      <div class="item">贷款资金由哈尔滨市龙商小额贷款有限责任公司提供</div>
+      <div class="item">放款额度及放款时间以机构审批结果为准</div>
+      <div class="item">投资有风险，贷款需谨慎</div>
+      <div class="content">
+        郑重声明：平台只提供贷款咨询服务，放款由银行或金融机构进行，所有贷款申请在未成功贷款前绝不收取任何费用，为了保证您的资金安全，请不要相信任何要求您支付费用的信息、邮件、电话等不实信息。
       </div>
     </div>
     <div class="toast" v-if="tips.length > 0">{{ tips }}</div>
@@ -104,6 +115,7 @@
 export default {
   data() {
     return {
+      toName: "registerComplete",
       tips: "",
       clientType: "",
       countDown: -1,
@@ -190,11 +202,6 @@ export default {
     }
   },
   mounted() {
-    // for(let i=100;i<100000;i++){
-    //   if(100000%i==0){
-    //     console.log(i)
-    //   }
-    // }闽ICP备2020018285号
     setInterval(() => {
       if (this.count == 0) {
         this.count = 3;
@@ -219,6 +226,8 @@ export default {
       this.isAgree = !this.isAgree;
     },
     async checkFun() {
+      // this.$router.push({ name: this.toName });
+      // return false;
       if (!this.isAgree) {
         this.tips = "请先同意协议";
         return;
@@ -242,7 +251,7 @@ export default {
           params: data
         });
         if (res && res.data && res.data.data == 1) {
-          this.$router.push({ name: "download" });
+          this.$router.push({ name: this.toName });
         } else {
           this.getVerification();
         }
@@ -284,7 +293,7 @@ export default {
       });
       if (res && res.data) {
         if (res.data.status == 0) {
-          this.$router.push({ name: "download" });
+          this.$router.push({ name: this.toName });
         } else {
           this.tips = res.data.msg;
         }
@@ -472,12 +481,14 @@ export default {
     }
     @media screen and (min-width: 376px) {
       .prompt {
-        padding: 70px 20px 46px;
+        padding: 70px 20px 40px;
       }
     }
   }
 
   .switch {
+    margin-top: -28px;
+    margin-bottom: 10px;
     position: relative;
     .switch-img {
       width: 100%;
@@ -487,7 +498,7 @@ export default {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -38%);
+      transform: translate(-50%, -31%);
       .item {
         border-bottom: 1px solid #f7f4f0;
         padding: 10px 0 10px 0;
@@ -561,6 +572,25 @@ export default {
     .content {
       font-size: 12px;
       color: #787878;
+    }
+  }
+  .footer2 {
+    color: #9f9f9f;
+    font-size: 14px;
+    line-height: 1.5;
+    background-image: url("../assets/images/registeredNew/footer-bg.jpg");
+    background-repeat: repeat-x;
+    background-color: #f8f8f8;
+    width: 100%;
+    padding: 30px 17px 20px;
+    box-sizing: border-box;
+    .item {
+      text-align: center;
+    }
+    .content {
+      font-size: 12px;
+      //text-indent: 2em;
+      text-align: left;
     }
   }
   .toast {
