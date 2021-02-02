@@ -51,10 +51,10 @@
         </span>
         <div class="txt">
           点击“立即领取额度”按钮即同意<span class="red">
-            <a class="red" href="http://boss.cj713.cn:83/register.html"
+            <a class="red" href="http://gdzlwlkj.cn:83/register.html"
               >《注册协议》</a
             >
-            <a class="red" href="http://boss.cj713.cn:83/privacy.html">
+            <a class="red" href="http://gdzlwlkj.cn:83/privacy.html">
               《犀牛分期隐私政策》</a
             >
           </span>
@@ -62,7 +62,7 @@
       </div>
     </div>
 
-    <div class="switch" v-if="false">
+    <div class="switch" v-if="true">
       <img
         class="switch-img"
         src="../assets/images/registeredNew/1 (5).png"
@@ -88,15 +88,15 @@
     </div>
 
     <img class="reason" src="../assets/images/registeredNew/1 (6).jpg" alt="" />
-    <div class="footer" v-if="false">
+    <div class="footer" v-if="true">
       <!-- <img class="img" src="../assets/images/registeredNew/1 (7).jpg" alt="" /> -->
-      <div class="title">京ICP备20010442号-1</div>
+      <div class="title">闽ICP备2020018285号</div>
       <div class="subtitle">理性借款，避免逾期</div>
       <div class="content">
         贷款有风险，借款需谨慎，请根据个人能力合理贷款；实际贷款额度因个人情况和资质而定，资金来源于银行等正规借款机构本平台为贷款信息平台不涉及贷款业务。
       </div>
     </div>
-    <div class="footer2">
+    <div class="footer2" v-if="false">
       <div class="item">广州正梁网络科技有限公司</div>
       <div class="item">粤ICP备20044831号-1</div>
       <div class="item">年利率不超过36%</div>
@@ -115,7 +115,7 @@
 export default {
   data() {
     return {
-      toName: "registerComplete",
+      toName: "download",
       tips: "",
       clientType: "",
       countDown: -1,
