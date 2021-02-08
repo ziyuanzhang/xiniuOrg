@@ -1,7 +1,9 @@
 <template>
   <div class="download">
-    <img class="top" src="../assets/images/download/top2.png" alt="" />
-    <div class="gif"></div>
+    <img class="top1" src="../assets/images/download/top1.jpg" alt="" />
+    <img class="top2" src="../assets/images/download/top2.jpg" alt="" />
+    <!-- <img class="top" src="../assets/images/download/top2.png" alt="" />
+    <div class="gif"></div> -->
 
     <img class="tips" src="../assets/images/download/tips.png" alt="" />
     <img class="step step1" src="../assets/images/download/step1.jpg" alt="" />
@@ -60,7 +62,8 @@ export default {
   text-align: center;
   background-color: #fff;
   padding-bottom: 110px;
-  .top {
+  .top1,
+  .top2 {
     width: 100%;
   }
   .gif {
@@ -77,8 +80,8 @@ export default {
   }
 
   .tips {
-    width: 80%;
-    //margin-bottom: -5px;
+    width: 100%;
+    margin-bottom: -20px;
   }
   .step {
     width: 100%;
