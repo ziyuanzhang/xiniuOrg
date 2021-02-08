@@ -1,7 +1,10 @@
 <template>
   <div class="download">
-    <img class="top1" src="../assets/images/download/top1.jpg" alt="" />
-    <img class="top2" src="../assets/images/download/top2.jpg" alt="" />
+    <img class="top1" src="../assets/images/download/top.png" alt="" />
+
+    <div class="gif"></div>
+    <img class="success" src="../assets/images/download/success.jpg" alt="" />
+
     <!-- <img class="top" src="../assets/images/download/top2.png" alt="" />
     <div class="gif"></div> -->
 
@@ -19,6 +22,7 @@
         alt=""
       />
     </div>
+    <div class="toast" v-if="showToast">额度已到账可极速提现！2S后跳转下载</div>
   </div>
 </template>
 
@@ -31,7 +35,8 @@ export default {
       androidUrl:
         "https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/xiniu.apk",
       iosUrl:
-        "itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_xiniu.plist"
+        "itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_xiniu.plist",
+      showToast: false
     };
   },
   async created() {
@@ -45,8 +50,11 @@ export default {
     }
 
     this.isAndroid = utls.isAndroid();
-    console.log(this.isAndroid);
     if (utls.isAndroid()) {
+      this.showToast = true;
+      setTimeout(() => {
+        this.showToast = false;
+      }, 2000);
       window.location.href = this.androidUrl;
     } else {
       window.location.href = this.iosUrl;
@@ -63,7 +71,8 @@ export default {
   background-color: #fff;
   padding-bottom: 110px;
   .top1,
-  .top2 {
+  .success,
+  .dian {
     width: 100%;
   }
   .gif {
@@ -80,8 +89,7 @@ export default {
   }
 
   .tips {
-    width: 100%;
-    margin-bottom: -20px;
+    width: 80%;
   }
   .step {
     width: 100%;
@@ -114,6 +122,23 @@ export default {
       margin-top: 40px;
       height: 50px;
     }
+  }
+  .toast {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    max-width: 90%;
+    padding: 10px;
+    box-sizing: border-box;
+    //background-color: #b4b2b5;
+    background-color: #000;
+    opacity: 0.6;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 18px;
+    border-radius: 10px;
   }
 }
 </style>

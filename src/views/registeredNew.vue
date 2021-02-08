@@ -108,8 +108,14 @@
       </div>
     </div>
     <div class="toast" v-if="tips.length > 0">{{ tips }}</div>
-    <div class="confirm">
+    <div class="confirm" v-if="showConfirm">
       <div class="main">
+        <img
+          class="close"
+          @click="closeFun()"
+          src="../assets/images/registeredNew/close.png"
+          alt=""
+        />
         <img
           class="img"
           src="../assets/images/registeredNew/alert.png"
@@ -118,11 +124,13 @@
         <div class="btn-list">
           <img
             class="btn-ok"
+            @click="comeOnFun()"
             src="../assets/images/registeredNew/alert-btn.png"
             alt=""
           />
           <img
             class="btn-cancel"
+            @click="backFun()"
             src="../assets/images/registeredNew/alert-cancel.png"
             alt=""
           />
@@ -210,10 +218,12 @@ export default {
       isAgree: true,
       count: 0,
       amount: 100000,
-      isTime: true
+      isTime: true,
+      showConfirm: false
     };
   },
   async created() {
+    this.fobidden_back();
     let data = {
       channelNo: this.$channelNo,
       clientType: this.$clientType
@@ -320,6 +330,27 @@ export default {
           this.tips = res.data.msg;
         }
       }
+    },
+    closeFun() {
+      this.showConfirm = false;
+    },
+    comeOnFun() {
+      this.showConfirm = false;
+    },
+    backFun() {
+      this.showConfirm = false;
+      history.go(-1);
+      window.removeEventListener("popstate", this.back_common);
+    },
+    //禁用浏览器返回
+    fobidden_back() {
+      //防止页面后退
+      history.pushState(null, null, document.URL);
+      window.addEventListener("popstate", this.back_common);
+    },
+    back_common() {
+      this.showConfirm = true;
+      history.pushState(null, null, document.URL);
     }
   },
   filters: {
@@ -649,6 +680,12 @@ export default {
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1;
+      .close {
+        position: absolute;
+        top: -10px;
+        left: 76%;
+        width: 30px;
+      }
       .img {
         width: 100%;
       }
@@ -661,10 +698,10 @@ export default {
         }
         .btn-cancel {
           position: absolute;
-          bottom: -8px;
+          bottom: -14px;
           left: 48%;
           z-index: 4;
-          height: 32px;
+          height: 30px;
         }
       }
     }
