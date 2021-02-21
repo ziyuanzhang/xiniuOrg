@@ -22,7 +22,7 @@
         />
       </div>
     </div>
-    <div class="registered-middle" v-if="countDown > -1">
+    <!-- <div class="registered-middle" v-if="countDown > -1">
       <input
         class="verification"
         type="text"
@@ -30,7 +30,7 @@
         placeholder="请输入验证码"
       />
       <div class="countDown-btn">{{ countDown }}S</div>
-    </div>
+    </div> -->
     <div class="registered-bottom">
       <img
         class="btn"
@@ -138,11 +138,20 @@
       </div>
       <div class="bg"></div>
     </div>
+    <verificationCode
+      v-if="showVerCode"
+      :tel="tel"
+      @emitVerificationCode="showVerCode = false"
+    ></verificationCode>
   </div>
 </template>
 
 <script>
+import verificationCode from "@/component/verificationCode";
 export default {
+  components: {
+    verificationCode
+  },
   data() {
     return {
       toName: "download",
@@ -219,7 +228,8 @@ export default {
       count: 0,
       amount: 100000,
       isTime: true,
-      showConfirm: false
+      showConfirm: false,
+      showVerCode: false
     };
   },
   async created() {
@@ -272,22 +282,23 @@ export default {
         this.tips = "手机号不正确";
         return;
       }
-      if (this.verification.length > 0) {
-        this.login();
+      // if (this.verification.length > 0) {
+      //   this.login();
+      // } else {
+      let data = {
+        mobile: this.tel,
+        clientType: this.$clientType
+      };
+      let res = await this.$ajax.get("/api/common/checkUser", {
+        params: data
+      });
+      if (res && res.data && res.data.data == 1) {
+        this.$router.push({ name: this.toName });
       } else {
-        let data = {
-          mobile: this.tel,
-          clientType: this.$clientType
-        };
-        let res = await this.$ajax.get("/api/common/checkUser", {
-          params: data
-        });
-        if (res && res.data && res.data.data == 1) {
-          this.$router.push({ name: this.toName });
-        } else {
-          this.getVerification();
-        }
+        // this.getVerification();
+        this.showVerCode = true;
       }
+      //}
     },
     async getVerification() {
       let data = {
