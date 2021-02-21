@@ -137,6 +137,13 @@ export default {
     closeFun() {
       this.$emit("emitVerificationCode");
     }
+  },
+  watch: {
+    code(val) {
+      if (val.trim().length == 6) {
+        this.login();
+      }
+    }
   }
 };
 </script>
