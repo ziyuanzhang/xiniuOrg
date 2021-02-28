@@ -107,37 +107,7 @@
         郑重声明：平台只提供贷款咨询服务，放款由银行或金融机构进行，所有贷款申请在未成功贷款前绝不收取任何费用，为了保证您的资金安全，请不要相信任何要求您支付费用的信息、邮件、电话等不实信息。
       </div>
     </div>
-    <div class="toast" v-if="tips.length > 0">{{ tips }}</div>
-    <div class="confirm" v-if="showConfirm">
-      <div class="main">
-        <img
-          class="close"
-          @click="closeFun()"
-          src="../assets/images/registeredNew/close.png"
-          alt=""
-        />
-        <img
-          class="img"
-          src="../assets/images/registeredNew/alert.png"
-          alt=""
-        />
-        <div class="btn-list">
-          <img
-            class="btn-ok"
-            @click="comeOnFun()"
-            src="../assets/images/registeredNew/alert-btn.png"
-            alt=""
-          />
-          <img
-            class="btn-cancel"
-            @click="backFun()"
-            src="../assets/images/registeredNew/alert-cancel.png"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="bg"></div>
-    </div>
+    <vStay v-if="showConfirm" @emitStay="eventStay"></vStay>
     <verificationCode
       v-if="showVerCode"
       :tel="tel"
@@ -148,14 +118,15 @@
 
 <script>
 import verificationCode from "@/component/verificationCode";
+import vStay from "@/component/vStay";
 export default {
   components: {
-    verificationCode
+    verificationCode,
+    vStay
   },
   data() {
     return {
       toName: "download",
-      tips: "",
       clientType: "",
       countDown: -1,
       tel: "",
@@ -271,15 +242,15 @@ export default {
       // this.$router.push({ name: this.toName });
       // return false;
       if (!this.isAgree) {
-        this.tips = "请先同意协议";
+        this.$toast("请先同意协议");
         return;
       }
       if (this.tel.trim().length == 0) {
-        this.tips = "请输入手机号";
+        this.$toast("请输入手机号");
         return;
       }
       if (this.tel.trim().length < 11) {
-        this.tips = "手机号不正确";
+        this.$toast("手机号不正确");
         return;
       }
       // if (this.verification.length > 0) {
@@ -320,7 +291,7 @@ export default {
             }
           }, 1000);
         } else {
-          this.tips = res.data.msg;
+          this.$toast(res.data.msg);
         }
       }
     },
@@ -338,20 +309,20 @@ export default {
         if (res.data.status == 0) {
           this.$router.push({ name: this.toName });
         } else {
-          this.tips = res.data.msg;
+          this.$toast(res.data.msg);
         }
       }
     },
-    closeFun() {
-      this.showConfirm = false;
-    },
-    comeOnFun() {
-      this.showConfirm = false;
-    },
-    backFun() {
-      this.showConfirm = false;
-      history.go(-1);
-      window.removeEventListener("popstate", this.back_common);
+    eventStay(obj) {
+      if (obj.type == "close") {
+        this.showConfirm = false;
+      } else if (obj.type == "come") {
+        this.showConfirm = false;
+      } else if (obj.type == "back") {
+        this.showConfirm = false;
+        history.go(-1);
+        window.removeEventListener("popstate", this.back_common);
+      }
     },
     //禁用浏览器返回
     fobidden_back() {
@@ -372,16 +343,6 @@ export default {
     format2(val) {
       val = val + "";
       return val.slice(3);
-    }
-  },
-  watch: {
-    tips() {
-      if (this.tips.length > 0) {
-        let setT = setTimeout(() => {
-          this.tips = "";
-          clearTimeout(setT);
-        }, 2000);
-      }
     }
   }
 };
@@ -655,66 +616,6 @@ export default {
       font-size: 12px;
       //text-indent: 2em;
       text-align: left;
-    }
-  }
-  .toast {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 9;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    min-width: 150px;
-    padding: 10px 5px;
-    border-radius: 10px;
-    background-color: #000;
-    opacity: 0.8;
-    font-size: 14px;
-  }
-  .confirm {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    .bg {
-      width: 100%;
-      height: 100%;
-      background-color: #000;
-      opacity: 0.5;
-    }
-    .main {
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      .close {
-        position: absolute;
-        top: -10px;
-        left: 76%;
-        width: 30px;
-      }
-      .img {
-        width: 100%;
-      }
-      .btn-list {
-        position: absolute;
-        z-index: 2;
-        bottom: 12%;
-        .btn-ok {
-          width: 58%;
-        }
-        .btn-cancel {
-          position: absolute;
-          bottom: -14px;
-          left: 48%;
-          z-index: 4;
-          height: 30px;
-        }
-      }
     }
   }
 }

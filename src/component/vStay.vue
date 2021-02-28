@@ -1,46 +1,51 @@
 <template>
-  <div class="vKeep">
-    <div class="confirm" v-if="showConfirm">
-      <div class="main">
+  <div class="vStay">
+    <div class="main">
+      <img
+        class="close"
+        @click="closeFun()"
+        src="../assets/images/registeredNew/close.png"
+        alt=""
+      />
+      <img class="img" src="../assets/images/registeredNew/alert.png" alt="" />
+      <div class="btn-list">
         <img
-          class="close"
-          @click="closeFun()"
-          src="../assets/images/registeredNew/close.png"
+          class="btn-ok"
+          @click="comeOnFun()"
+          src="../assets/images/registeredNew/alert-btn.png"
           alt=""
         />
         <img
-          class="img"
-          src="../assets/images/registeredNew/alert.png"
+          class="btn-cancel"
+          @click="backFun()"
+          src="../assets/images/registeredNew/alert-cancel.png"
           alt=""
         />
-        <div class="btn-list">
-          <img
-            class="btn-ok"
-            @click="comeOnFun()"
-            src="../assets/images/registeredNew/alert-btn.png"
-            alt=""
-          />
-          <img
-            class="btn-cancel"
-            @click="backFun()"
-            src="../assets/images/registeredNew/alert-cancel.png"
-            alt=""
-          />
-        </div>
       </div>
-      <div class="bg"></div>
     </div>
+    <div class="bg"></div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {};
+  },
+  methods: {
+    closeFun() {
+      this.$emit("emitStay", { type: "close" });
+    },
+    comeOnFun() {
+      this.$emit("emitStay", { type: "come" });
+    },
+    backFun() {
+      this.$emit("emitStay", { type: "back" });
+    }
   }
 };
 </script>
 <style lang="less" scoped>
-.vKeep {
+.vStay {
   width: 100vw;
   height: 100vh;
   position: fixed;

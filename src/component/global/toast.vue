@@ -14,10 +14,11 @@ export default {
       setT: ""
     };
   },
-  mounted() {
+  created() {
     this.setT = setTimeout(() => {
       clearTimeout(this.setT);
       this.cancelFun();
+      // this.$el.parentNode.removeChild(this.$el)
     }, this.duration);
   }
 };
