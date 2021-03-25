@@ -65,7 +65,7 @@
     <div class="switch" v-if="true">
       <img
         class="switch-img"
-        src="../assets/images/registeredNew/1 (5).png"
+        src="../assets/images/registeredNew/ff.png"
         alt=""
       />
       <div class="content">
@@ -459,7 +459,8 @@ export default {
     width: 100%;
     padding: 15px 20px 0;
     box-sizing: border-box;
-    background-image: url("../assets/images/registeredNew/1 (4).jpg");
+    background-image: url("../assets/images/registeredNew/dd.jpg");
+
     background-size: 100%;
     background-repeat: no-repeat;
     position: relative;
@@ -512,7 +513,7 @@ export default {
   }
 
   .switch {
-    margin-top: -28px;
+    margin-top: -18px;
     margin-bottom: 10px;
     position: relative;
     .switch-img {
