@@ -6,13 +6,15 @@ import "@/assets/css/reset.css";
 import "@/assets/font/iconfont.css";
 import Axios from "axios";
 import utls from "./utils/utils";
-Axios.defaults.baseURL = "http://gdzlwlkj.cn:8080/loan";
+Axios.defaults.baseURL = "http://xz2021.cn:8080/loan";
 Vue.prototype.$ajax = Axios;
 import Toast from "./component/global/toastJS";
 
 Vue.prototype.$toast = Toast;
 
 Vue.config.productionTip = false;
+
+Vue.prototype.$majia = "jiguangfenqi";
 
 Vue.prototype.$clientType = utls.isAndroid() ? 1 : 2;
 

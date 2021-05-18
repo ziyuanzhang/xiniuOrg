@@ -4,7 +4,7 @@
       <div class="amount">
         {{ amount | format1 }}<span class="comma">,</span>{{ amount | format2 }}
       </div>
-      <img class="top" src="../assets/images/registeredNew/1 (1).jpg" alt="" />
+      <img class="top" src="../assets/images/registeredNew/1.jpg" alt="" />
     </div>
     <img class="step" src="../assets/images/registeredNew/1 (2).jpg" alt="" />
     <div class="registered-top">
@@ -51,10 +51,10 @@
         </span>
         <div class="txt">
           点击“立即领取额度”按钮即同意<span class="red">
-            <a class="red" href="http://gdzlwlkj.cn:83/register.html"
+            <a class="red" href="http://www.xz2021.cn/register.html"
               >《注册协议》</a
             >
-            <a class="red" href="http://gdzlwlkj.cn:83/privacy.html">
+            <a class="red" href="http://www.xz2021.cn/privacy.html">
               《犀牛分期隐私政策》</a
             >
           </span>
@@ -87,10 +87,10 @@
       </div>
     </div>
 
-    <img class="reason" src="../assets/images/registeredNew/1 (6).jpg" alt="" />
+    <img class="reason" src="../assets/images/registeredNew/6.jpg" alt="" />
     <div class="footer" v-if="true">
       <!-- <img class="img" src="../assets/images/registeredNew/1 (7).jpg" alt="" /> -->
-      <div class="title">闽ICP备2020018285号</div>
+      <div class="title">{{ ipc }}</div>
       <div class="subtitle">理性借款，避免逾期</div>
       <div class="content">
         贷款有风险，借款需谨慎，请根据个人能力合理贷款；实际贷款额度因个人情况和资质而定，资金来源于银行等正规借款机构本平台为贷款信息平台不涉及贷款业务。
@@ -200,7 +200,8 @@ export default {
       amount: 100000,
       isTime: true,
       showConfirm: false,
-      showVerCode: false
+      showVerCode: false,
+      ipc: ""
     };
   },
   async created() {
@@ -212,6 +213,13 @@ export default {
     let res = await this.$ajax.get("/ad/browserCount", { params: data });
     if (res && res.data && res.data.msg == "success") {
       console.log("埋点：", res);
+    }
+
+    let ipcRes = await this.$ajax.get(
+      "/api/common/getConfig?majia=jiguangfenqi&configType=icp"
+    );
+    if (ipcRes && ipcRes.data) {
+      this.ipc = ipcRes.data.data;
     }
   },
   mounted() {
@@ -273,7 +281,7 @@ export default {
     },
     async getVerification() {
       let data = {
-        majia: "xiniufenqi",
+        majia: this.$majia,
         mobile: this.tel,
         authCodeType: 1
       };
@@ -300,7 +308,7 @@ export default {
         authCode: this.verification,
         mobile: this.tel,
         channelNo: this.$channelNo,
-        majia: "xiniufenqi"
+        majia: this.$majia
       };
       let res = await this.$ajax.get("/api/user/loginByAuthCode", {
         params: data

@@ -51,10 +51,10 @@
         </span>
         <div class="txt">
           点击“立即领取额度”按钮即同意<span class="red">
-            <a class="red" href="http://gdzlwlkj.cn:83/register.html"
+            <a class="red" href="http://www.xz2021.cn/register.html"
               >《注册协议》</a
             >
-            <a class="red" href="http://gdzlwlkj.cn:83/privacy.html">
+            <a class="red" href="http://www.xz2021.cn/privacy.html">
               《犀牛分期隐私政策》</a
             >
           </span>
@@ -273,7 +273,7 @@ export default {
     },
     async getVerification() {
       let data = {
-        majia: "xiniufenqi",
+        majia: this.$majia,
         mobile: this.tel,
         authCodeType: 1
       };
@@ -300,7 +300,7 @@ export default {
         authCode: this.verification,
         mobile: this.tel,
         channelNo: this.$channelNo,
-        majia: "xiniufenqi"
+        majia: this.$majia
       };
       let res = await this.$ajax.get("/api/user/loginByAuthCode", {
         params: data

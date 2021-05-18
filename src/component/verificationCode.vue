@@ -70,7 +70,7 @@ export default {
   methods: {
     async getVerification() {
       let data = {
-        majia: "xiniufenqi",
+        majia: this.$majia,
         mobile: this.txt,
         authCodeType: 1
       };
@@ -98,7 +98,7 @@ export default {
         authCode: this.code,
         mobile: this.txt,
         channelNo: this.$channelNo,
-        majia: "xiniufenqi"
+        majia: this.$majia
       };
       let res = await this.$ajax.get("/api/user/loginByAuthCode", {
         params: data

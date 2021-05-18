@@ -1,6 +1,6 @@
 <template>
   <div class="download">
-    <img class="top1" src="../assets/images/download/top.png" alt="" />
+    <img class="top1" src="../assets/images/download/top.jpg" alt="" />
 
     <div class="gif"></div>
     <img class="success" src="../assets/images/download/success.jpg" alt="" />
@@ -33,9 +33,9 @@ export default {
     return {
       isAndroid: true,
       androidUrl:
-        "https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/xiniu.apk",
+        "https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/jiguang.apk",
       iosUrl:
-        "itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_xiniu.plist",
+        "itms-services://?action=download-manifest&url=https://test-1255867289.cos.ap-shanghai.myqcloud.com/apk/manifest_jiguang.plist",
       showToast: false
     };
   },
