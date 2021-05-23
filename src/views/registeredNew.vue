@@ -51,11 +51,11 @@
         </span>
         <div class="txt">
           点击“立即领取额度”按钮即同意<span class="red">
-            <a class="red" href="http://www.xz2021.cn/register.html"
+            <a class="red" :href="`${this.$Domain}/register.html`"
               >《注册协议》</a
             >
-            <a class="red" href="http://www.xz2021.cn/privacy.html">
-              《犀牛分期隐私政策》</a
+            <a class="red" :href="`${this.$Domain}/privacy.html`">
+              《极光分期隐私政策》</a
             >
           </span>
         </div>
@@ -205,7 +205,7 @@ export default {
     };
   },
   async created() {
-    this.fobidden_back();
+    // this.fobidden_back();
     let data = {
       channelNo: this.$channelNo,
       clientType: this.$clientType
