@@ -55,7 +55,7 @@
               >《注册协议》</a
             >
             <a class="red" :href="`${this.$Domain}/privacy.html`">
-              《极光分期隐私政策》</a
+              《融丰分期隐私政策》</a
             >
           </span>
         </div>
